@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chai Chat</title>
+    <title>Chai Chat - No Sidebar</title>
     <style>
         body {
             margin: 0;
@@ -24,27 +24,29 @@
 
         iframe {
             width: 100%;
-            height: 110%;
+            height: 100%;
             border: none;
-            position: absolute;
-            top: -50px; /* Ajustează ca să ascunzi header-ul */
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px; /* Ascunde header-ul */
-            background: white;
-            z-index: 2;
         }
     </style>
 </head>
 <body>
     <div class="iframe-container">
-        <iframe src="https://web.chai-research.com/chat/_bot_be535a9d-3042-4066-a80b-966d3824e43a_ZfFDV2CqVXMw1E7OSxpsuQwDm3v2_1739365607617?is_new=true"></iframe>
-        <div class="overlay"></div> <!-- Acoperă partea de sus -->
+        <iframe id="chatFrame" src="https://web.chai-research.com/chat/_bot_be535a9d-3042-4066-a80b-966d3824e43a_ZfFDV2CqVXMw1E7OSxpsuQwDm3v2_1739365607617?is_new=true"></iframe>
     </div>
+
+    <script>
+        document.getElementById("chatFrame").onload = function() {
+            let iframe = document.getElementById("chatFrame").contentWindow.document;
+
+            // Ascundem meniul lateral și banner-ul "GET 3 DAYS ULTRA FREE"
+            setTimeout(() => {
+                let sidebar = iframe.querySelector(".sidebar-class"); // Înlocuiește cu clasa exactă a meniului
+                let banner = iframe.querySelector(".header-banner-class"); // Înlocuiește cu clasa bannerului
+
+                if (sidebar) sidebar.style.display = "none";
+                if (banner) banner.style.display = "none";
+            }, 2000); // Dăm timp paginii să se încarce
+        };
+    </script>
 </body>
 </html>
