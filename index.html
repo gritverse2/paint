@@ -17,17 +17,17 @@
 
         .iframe-container {
             width: 100vw;
-            height: 90vh; /* Ajustează pentru a ascunde partea de jos */
+            height: 90vh; /* Ajustează înălțimea astfel încât să fie vizibil doar ce vrei */
             position: relative;
             overflow: hidden;
         }
 
         iframe {
             width: 100%;
-            height: 120%; /* Mărește pentru a ascunde partea de jos */
+            height: 110%; /* Ușor mai mare ca să ascundem partea de jos */
             border: none;
             position: absolute;
-            top: -10vh; /* Mută în sus ca să ascundă butoanele */
+            top: 0; /* Nu mai mutăm iframe-ul în sus */
         }
 
         .overlay {
@@ -35,15 +35,15 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 50px; /* Înălțimea benzii care acoperă butoanele */
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white); /* Fading effect */
+            height: 60px; /* Ascunde doar partea de jos */
+            background: white; /* Sau culoarea de fundal a paginii */
         }
     </style>
 </head>
 <body>
     <div class="iframe-container">
         <iframe src="https://inpainter.vercel.app/paint"></iframe>
-        <div class="overlay"></div> <!-- Acoperă partea de jos -->
+        <div class="overlay"></div> <!-- Acoperă doar partea inferioară -->
     </div>
 </body>
 </html>
