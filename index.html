@@ -5,25 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inpainter Clone</title>
     <style>
-        body { margin: 0; overflow: hidden; }
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+
         .iframe-container {
             width: 100vw;
-            height: 60vh; /* Ajustează înălțimea ca să ascunzi partea de jos */
-            overflow: hidden;
+            height: 90vh; /* Ajustează pentru a ascunde partea de jos */
             position: relative;
+            overflow: hidden;
         }
+
         iframe {
             width: 100%;
-            height: 100%; /* Mărește înălțimea iframe-ului ca să ascunzi partea de jos */
+            height: 120%; /* Mărește pentru a ascunde partea de jos */
             border: none;
             position: absolute;
-            top: 0vh; /* Ajustează pentru a ascunde textul */
+            top: -10vh; /* Mută în sus ca să ascundă butoanele */
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px; /* Înălțimea benzii care acoperă butoanele */
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white); /* Fading effect */
         }
     </style>
 </head>
 <body>
     <div class="iframe-container">
         <iframe src="https://inpainter.vercel.app/paint"></iframe>
+        <div class="overlay"></div> <!-- Acoperă partea de jos -->
     </div>
 </body>
 </html>
