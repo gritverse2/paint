@@ -36,16 +36,25 @@
 
     <script>
         document.getElementById("chatFrame").onload = function() {
-            let iframe = document.getElementById("chatFrame").contentWindow.document;
+            let iframeDoc = document.getElementById("chatFrame").contentWindow.document;
 
-            // Ascundem meniul lateral și banner-ul "GET 3 DAYS ULTRA FREE"
             setTimeout(() => {
-                let sidebar = iframe.querySelector(".sidebar-class"); // Înlocuiește cu clasa exactă a meniului
-                let banner = iframe.querySelector(".header-banner-class"); // Înlocuiește cu clasa bannerului
+                // Lista elementelor de șters
+                let selectorsToRemove = [
+                    "span.absolute.left-1\\/2.top-1\\/2", // Element ascuns
+                    "div.cursor-default strong.font-bold.text-chai-red-500", // Header "GET 3 DAYS ULTRA FREE"
+                    "img[alt='CHAI WEB | Logo']", // Logo Chai Web
+                    "button[aria-label='CHAI WEB | Share Button']", // Buton Subscribe
+                    "button[aria-label='CHAI WEB | Sign Out Button']" // Buton Sign Out
+                ];
 
-                if (sidebar) sidebar.style.display = "none";
-                if (banner) banner.style.display = "none";
-            }, 2000); // Dăm timp paginii să se încarce
+                // Parcurgem lista și ștergem elementele
+                selectorsToRemove.forEach(selector => {
+                    let elements = iframeDoc.querySelectorAll(selector);
+                    elements.forEach(el => el.style.display = "none");
+                });
+
+            }, 3000); // Dăm timp paginii să se încarce complet
         };
     </script>
 </body>
