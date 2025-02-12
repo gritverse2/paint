@@ -3,53 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inpainting Clone</title>
-    <link rel="stylesheet" href="https://inpainter.vercel.app/_next/static/css/994a46313e567097.css">
+    <title>Chai Chat</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background: #f4f4f4;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #000;
         }
-        .container {
-            max-width: 1024px;
+
+        .iframe-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        iframe {
             width: 100%;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 110%;
+            border: none;
+            position: absolute;
+            top: -50px; /* Ajustează ca să ascunzi header-ul */
         }
-        .hidden {
-            display: none !important; /* Ascunde butoanele API */
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px; /* Ascunde header-ul */
+            background: white;
+            z-index: 2;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Inpainting with Ideogram v2</h2>
-        <form class="py-5">
-            <div class="flex">
-                <input type="text" name="prompt" placeholder="Enter a prompt..." value="painting of fruit on a table" style="width: 70%; padding: 8px;">
-                <select name="model" style="padding: 8px;">
-                    <option value="ideogram-ai/ideogram-v2-turbo">Ideogram v2 Turbo (Fast)</option>
-                    <option value="ideogram-ai/ideogram-v2">Ideogram v2 (High Quality)</option>
-                </select>
-                <button type="submit" style="padding: 8px 12px; background: black; color: white; border: none; cursor: pointer;">Generate</button>
-            </div>
-        </form>
-        <div class="canvas-container" style="background: gray; width: 100%; height: 400px;"></div>
+    <div class="iframe-container">
+        <iframe src="https://web.chai-research.com/chat/_bot_be535a9d-3042-4066-a80b-966d3824e43a_ZfFDV2CqVXMw1E7OSxpsuQwDm3v2_1739365607617?is_new=true"></iframe>
+        <div class="overlay"></div> <!-- Acoperă partea de sus -->
     </div>
-
-    <script>
-        // Elimină butoanele API dacă există
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll(".lil-button").forEach(button => button.classList.add("hidden"));
-        });
-    </script>
 </body>
 </html>
